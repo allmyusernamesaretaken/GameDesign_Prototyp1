@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    Animator animator;
     [SerializeField] private int health = 100;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     public float Health
     {
         set
@@ -22,6 +28,11 @@ public class Enemy : MonoBehaviour
     }
 
     public void Defeated()
+    {
+        animator.SetTrigger("defeated");
+    }
+
+    public void RemoveEnemy()
     {
         Destroy(gameObject);
     }
